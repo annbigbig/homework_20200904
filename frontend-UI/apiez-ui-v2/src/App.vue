@@ -34,7 +34,7 @@
                <el-button type="primary" round>刪  除  員  工</el-button>
            </router-link>
         
-      
+      <!--
       <router-link to="/alpha" @click.native="onClick($event,6)" v-bind:class="{ active: (activated_button_index === 6) }">
           <el-button type="primary" round>測 試 用 區 塊 A</el-button>
       </router-link>
@@ -44,7 +44,7 @@
       <router-link to="/theta" @click.native="onClick($event,8)" v-bind:class="{ active: (activated_button_index === 8) }">
           <el-button type="primary" round>測 試 用 區 塊 C</el-button>
       </router-link>
-      
+      -->
       
     </div>
     <br/>
@@ -87,21 +87,28 @@ export default {
         //console.log('route path is changed from ' , from , ' , to ' , to);
         //console.log('from.path ===', from.path);
         //console.log('to.path ===' , to.path);
+        console.log('to.name ===' , to.name);
 
         //write these code for BUG when u press last page button in browser
-        var newPath = to.path;
-        if(newPath === '/employees') {
-           this.activated_button_index = 1;
-        }else if (newPath === '/employees/search'){
-           this.activated_button_index = 2;
-        }else if (newPath === '/employee') {
+        var newPathName = to.name;
+        if(newPathName === 'Home' || newPathName === 'one' || newPathName === 'oneID') {
            this.activated_button_index = 0;
-        }else if (newPath === '/employee/create'){
+        }else if (newPathName === 'all'){
+           this.activated_button_index = 1;
+        }else if (newPathName === 'search') {
+           this.activated_button_index = 2;
+        }else if (newPathName === 'create'){
            this.activated_button_index = 3;
-        }else if (newPath === '/employee/update'){
+        }else if (newPathName === 'update' || newPathName === 'updateID'){
            this.activated_button_index = 4;
-        }else if (newPath === '/employee/delete'){
+        }else if (newPathName === 'delete' || newPathName === 'deleteID'){
            this.activated_button_index = 5;
+        }else if (newPathName === 'alpha'){
+           this.activated_button_index = 6;
+        }else if (newPathName === 'beta'){
+          this.activated_button_index = 7;
+        }else if (newPathName === 'theta'){
+          this.activated_button_index = 8;  
         }else{
            this.activated_button_index = 0;
         }
